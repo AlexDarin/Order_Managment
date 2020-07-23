@@ -1,0 +1,32 @@
+<template>
+    <lightning-card> 
+        <div class="slds-m-around_x-small">
+            <div class="slds-grid slds-m-around_x-small">
+
+                <div class="slds-col slds-size_1-of-5">
+                    <p class="slds-text-heading_medium">Name: {accountName}</p>
+                </div>
+
+                <div class="slds-col slds-size_1-of-5">
+                    <p class="slds-text-heading_medium">Number: {accountNumber}</p>
+                </div>
+
+                <div class="slds-col slds-size_2-of-5">
+                    <template if:true={isManager}>
+                        <lightning-button class="slds-m-around-small" label="Create Product" onclick={handleCreateProductButton} slot="actions"></lightning-button>
+                    </template>
+                </div>
+
+                <div class="slds-col slds-size_1-of-5">
+                    <lightning-button class="slds-m-around-small" label="Cart" onclick={handleCartButton} slot="actions"></lightning-button>
+                </div>
+
+            </div>
+
+            <c-item-cart></c-item-cart>
+        
+        <c-item-list></c-item-list>
+        
+        </div>
+    </lightning-card>
+</template>

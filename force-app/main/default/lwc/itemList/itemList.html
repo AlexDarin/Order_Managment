@@ -1,0 +1,47 @@
+<template>
+    <div class="slds-grid slds-wrap slds-theme_shade">
+
+        <div class="slds-col slds-size_1-of-6 slds-m-around_medium">
+
+            <h1 class="slds-text-heading_medium">Filter</h1> </br>
+
+            <lightning-checkbox-group 
+                name="Types" label="Type:" options={optionsTypes} value={typesFilter} onchange={handleCBTypeChange}>
+            </lightning-checkbox-group>
+
+            </br>
+
+            <lightning-checkbox-group 
+                name="Families" label="Family:" options={optionsFamilies} value={familiesFilter} onchange={handleCBFilterChange}>
+            </lightning-checkbox-group>
+            
+        </div>
+
+        <div class="slds-col slds-theme_shade">
+
+            <lightning-input class="slds-p-around_xx-small" type="search" value={inputVal} onchange={handleSearch}></lightning-input>
+
+            <div class="slds-grid slds-wrap" id="items">
+            <template if:true={items.data} >
+                    <template for:each={items.data} for:item="itm">
+
+                        <lightning-card class="slds-p-around_small slds-col slds-size_1-of-2" key={itm.Id}>
+                            <p class="slds-p-horizontal--medium slds-text-heading_small" key={itm.Id}>{itm.Name}</p>
+                            </br>
+                            <p class="slds-p-horizontal--medium" key={itm.Id}>{itm.Description__c}</p>
+                            <p slot="footer">
+                                <lightning-button label="Details" class="slds-p-around_xx-small" name={itm.Id} onclick={handleDetails}></lightning-button>
+                                <lightning-button label="Add" class="slds-p-around_xx-small" name={itm.Id} onclick={handleAddItemToCart}></lightning-button>
+                            </p>
+                        </lightning-card>
+
+                   </template>
+            </template>
+            </div>
+        </div>
+
+    </div>
+    
+    <c-item-info></c-item-info>
+
+</template>
